@@ -288,6 +288,9 @@ public abstract class MazeRunCommand extends Command implements MazeRunner {
         simplifyRobotCommandSequence();
     }
 
+    /**
+     * Sets the initial status of the robot
+     */
     private void setInitialRobotStatus() {
         target.setStatus("Starting maze run..");
         robotStatus.add(target.toString());
