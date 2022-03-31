@@ -84,14 +84,14 @@ public abstract class AbstractWorld implements IWorld{
 
         Position newPosition = new Position(newX, newY);
 
-        if (isNewPositionAllowed(newPosition)) {
-            if (!this.maze.blocksPath(this.position, newPosition)) {
+        if (!this.maze.blocksPath(this.position, newPosition)) {
+            if (isNewPositionAllowed(newPosition)) {
                 this.position = newPosition;
                 return UpdateResponse.SUCCESS;
             }
-            return UpdateResponse.FAILED_OBSTRUCTED;
+            return UpdateResponse.FAILED_OUTSIDE_WORLD;
         }
-        return UpdateResponse.FAILED_OUTSIDE_WORLD;
+        return UpdateResponse.FAILED_OBSTRUCTED;
     }
 
     @Override
