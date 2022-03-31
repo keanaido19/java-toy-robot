@@ -24,10 +24,10 @@ public class MazeRunTopCommand extends MazeRunCommand {
                 addToRobotStatus(target.showRobotStatus());
             }
             target.setStatus("I am at the top edge. (Cost: " + getMazeRunCost()
-                    + " steps)");
+                    + (getMazeRunCost() == 1 ? " step)": " steps)"));
         } else {
             target.setStatus("I am lost. (Cost: " + getMazeRunCost() +
-                    " steps)");
+                    (getMazeRunCost() == 1 ? " step)": " steps)"));
         }
 
         addToRobotStatus(target.toString());
