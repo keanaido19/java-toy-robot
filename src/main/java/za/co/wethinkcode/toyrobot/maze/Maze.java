@@ -23,4 +23,12 @@ public interface Maze {
      */
     boolean blocksPath(Position a, Position b);
 
+    /**
+     * Checks if this maze has at least one obstacle that blocks the position
+     * at coordinate (x1, y1).
+     * @param position The given Position
+     * @return `true` if there is an obstacle is in the way
+     */
+    boolean blocksPosition(Position position);
+
 }

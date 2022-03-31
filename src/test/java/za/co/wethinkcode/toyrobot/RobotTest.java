@@ -2,6 +2,10 @@ package za.co.wethinkcode.toyrobot;
 
 
 import org.junit.jupiter.api.Test;
+import za.co.wethinkcode.toyrobot.commands.Command;
+import za.co.wethinkcode.toyrobot.commands.HelpCommand;
+import za.co.wethinkcode.toyrobot.commands.ShutdownCommand;
+import za.co.wethinkcode.toyrobot.commands.movementcommands.ForwardCommand;
 
 import static org.junit.jupiter.api.Assertions.*;
 
