@@ -3,11 +3,14 @@ package za.co.wethinkcode.toyrobot.commandhandler;
 import za.co.wethinkcode.toyrobot.commands.Command;
 import za.co.wethinkcode.toyrobot.commands.NullCommand;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Command Handler Class
  */
 public class CommandHandler {
-    private final String commandInput;
+    private String commandInput;
     private final CommandHandlerStrategy[] RobotCommandHandlerStrategies =
             {new ShutdownCommandHandler(),
                     new HelpCommandHandler(),
@@ -67,6 +70,17 @@ public class CommandHandler {
     public Command getRobotCommand() {
         String command = getCommand();
         String[] arguments = getCommandArguments();
+
+        try {
+            String argument = arguments[0];
+            Pattern pattern = Pattern.compile("^\\d+$");
+            Matcher matcher = pattern.matcher(argument);
+            if (matcher.find()) Integer.parseInt(argument);
+        } catch (NumberFormatException e) {
+            command = "null";
+            commandInput = commandInput + " - Number too large!";
+        }
+
         for (CommandHandlerStrategy commandHandlerStrategy :
                 RobotCommandHandlerStrategies) {
             if (commandHandlerStrategy.checkCommand(command, arguments)) {
